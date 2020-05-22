@@ -57,8 +57,8 @@ func GetDomainExpiryDate(domain string) (float64, error) {
 }
 
 func GetSSLExpiryDate(domain string) (float64, error) {
-	dialer := net.Dialer{Timeout: time.Second * 3}
-	conn, err := tls.DialWithDialer(&dialer, "tcp", fmt.Sprintf("%s:%d", "www."+domain, 443), &tls.Config{InsecureSkipVerify: true})
+	dialer := net.Dialer{Timeout: time.Second * 5}
+	conn, err := tls.DialWithDialer(&dialer, "tcp", fmt.Sprintf("%s:%d", domain, 443), &tls.Config{InsecureSkipVerify: true})
 	if err != nil {
 		return float64(000.000), err
 	}
